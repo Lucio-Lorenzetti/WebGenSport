@@ -1,0 +1,278 @@
+html {
+    scroll-behavior: smooth; /* Habilitar desplazamiento suave */
+}
+
+/*Estilos para el Header y Footer*/
+header, footer {
+    background: #000;
+    opacity: 100%;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s, transform 1s;
+}
+
+header.scrolled, footer.scrolled {
+    opacity: 70%;
+    transform: scale(1);
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+}
+
+header .logo, footer p {
+    margin: 0 2px;
+}
+
+header nav ul, footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav ul li, footer nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a, footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/*Estilos para el Body*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000000; /* Texto blanco */
+    background-color: #fff; /* Fondo blanco */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative; /* Necesario para la pseudo-clase */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255); /* Fondo negro traslúcido */
+    z-index: -1; /* Asegura que esté detrás del contenido */
+}
+
+/*Estilos para las secciones*/
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px; /* Para compensar el header fijo */
+    padding-bottom: 50px; /* Para compensar el footer fijo */
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana gráfica */
+    box-sizing: border-box;
+    width: 100%;
+    position: relative; /* Para el posicionamiento de la imagen de fondo */
+    overflow: hidden; /* Asegura que los elementos animados no salgan del contenedor */
+    border-top: 10px solid #ffffff;
+    border-bottom: 10px solid #ffffff; /* Borde blanco delgado */
+    color: #ffffff; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la sección */
+    background-position: center; /* Centra la imagen de fondo */
+}
+
+/* Contenido de la sección */
+.content {
+    display: flex;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    position: relative; /* Necesario para la animación de los elementos */
+    overflow: hidden; /* Asegura que los elementos animados no salgan del contenedor */
+    z-index: 10; /* Asegura que esté por encima de la capa de fondo */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex-direction: column; /* Hace que el contenido se organice en columna */
+}
+
+/* Texto dentro de la sección */
+.text {
+    flex: 0 0 60%; /* Ocupa el 60% del espacio */
+    padding: 20px;
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del tamaño */
+    overflow: auto; /* Permite el desplazamiento si el contenido excede el tamaño */
+    color: #ffffff; /* Asegura que el texto sea blanco */
+    animation: fadeIn 1s forwards; /* Aplicar la animación de desvanecimiento */
+    z-index: 20; /* Asegura que el texto esté encima del overlay */
+}
+.content:hover{
+    background-color: #000000;
+    opacity: 0.7;
+    transition: 3s;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Aplicar las animaciones a los textos */
+.text.izquierda {
+    animation: slideInFromLeft 1s forwards; /* Aplicar la animación */
+}
+
+.text.derecha {
+    animation: slideInFromRight 1s forwards; /* Aplicar la animación */
+}
+
+
+/* Sección de imagen 
+.image {
+    flex: 0 0 40%; /* Ocupa el 40% del espacio 
+    padding: 20px;
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del tamaño 
+}
+
+.image.izquierda {
+    transform: translateX(-100%); /* Desplazado a la izquierda 
+    animation: slideInFromLeft 1s forwards; /* Aplicar la animación 
+}
+
+.image.derecha {
+    transform: translateX(100%); /* Desplazado a la derecha 
+    animation: slideInFromRight 1s forwards; /* Aplicar la animación 
+}
+
+.image img {
+    width: 100%; /* Ocupa el 100% del contenedor 
+    height: 100%; /* Ocupa el 100% del contenedor 
+    object-fit: cover; /* Mantener la relación de aspecto y llenar el contenedor 
+}*/
+
+/* Animaciones para los elementos de la sección
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}*/
+/*Estilos para el inicio*/
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5; /* Opacidad del 50% */
+    z-index: 10; /* Para asegurar que quede detrás del contenido */
+} 
+
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+/* Estilo para la imagen fija */
+.fixed-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 15; /* Asegura que esté por encima del carrusel */
+}
+.fixed-image img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+/*Estilos para los contactos*/
+.social-media {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    align-items: center;    /* Centra los íconos verticalmente si es necesario */
+    gap: 20px;              /* Espacio entre los íconos */
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.social-icon img {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin: auto;
+}
+
+.social-icon span {
+    font-size: 50px; /* Ajusta el tamaño del texto según sea necesario */
+}
+
